@@ -71,38 +71,25 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
+
     private void executeResponse() {
         apiService.getResponse().enqueue(new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
                 String usdRubValue = response.body().query.results.rate.get(0).rate;
                 String eurRubValue = response.body().query.results.rate.get(1).rate;
-
                 usdRubValueTextView.setText("USD/RUB:" + usdRubValue);
                 eurRubValueTextView.setText("EUR/RUB:" + eurRubValue);
-
-                usdRubRate = Float.parseFloat(usdRubValue);
-                eurRubRate = Float.parseFloat(eurRubValue);
-
-                if(!usdValueEditText.getText().toString().equals("")) {
-                    myUsd = Float.parseFloat(usdValueEditText.getText().toString());
-                }
-                else myUsd = 0;
-
-                if(!eurValueEditText.getText().toString().equals("")) {
-                    myEur = Float.parseFloat(eurValueEditText.getText().toString());
-                }
-                else myEur = 0;
-
             }
+
             @Override
             public void onFailure(Call<ServerResponse> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "Something wrong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Что-то пошло не так", Toast.LENGTH_SHORT).show();
             }
         });
-
-
     }
+
 
     public void showNotification() {
         PendingIntent pi = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), 0);
@@ -129,16 +116,11 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this,"Saved", Toast.LENGTH_SHORT).show();
     }
 
-    private void loaData() {
+    private void loadData() {
         sPref = getPreferences(MODE_PRIVATE);
         float savedUsdRubRate = sPref.getFloat("USDRUB",0.0f);
         float savedEurRubRate = sPref.getFloat("EURRUB",0.0f);
         //Toast.makeText(this, String.valueOf(savedText), Toast.LENGTH_SHORT).show();
-    }
-
-    public interface ApiService {
-        @GET("/v1/public/yql?q=select+*+from+yahoo.finance.xchange+where+pair+=+%22USDRUB,EURRUB%22&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=")
-        Call<ServerResponse> getResponse();
     }
 
 }
