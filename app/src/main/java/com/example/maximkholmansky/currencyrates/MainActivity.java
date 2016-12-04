@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.NotificationCompat;
 import android.view.View;
@@ -31,10 +30,11 @@ import retrofit2.http.GET;
 public class MainActivity extends AppCompatActivity {
     //api нашел тут: "https://toster.ru/q/7088"
     private static final String BASE_URL = "https://query.yahooapis.com";
-    private EditText usdValueEditText;
-    private EditText eurValueEditText;
-    private TextView eurRubValueTextView;
-    private TextView usdRubValueTextView;
+
+    private EditText usdValueEditText; //введенное значение usdrub
+    private EditText eurValueEditText; //введенное значение eurrub
+    private TextView eurRubValueTextView; //актуальный курс eurrub
+    private TextView usdRubValueTextView; // актуальный курс usdrub
     private Button getRatesButton;
     private Retrofit retrofit = new Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -53,18 +53,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         apiService = retrofit.create(ApiService.class);
+
         getRatesButton = (Button) findViewById(R.id.buttonDoit);
         usdValueEditText = (EditText) findViewById(R.id.editTextUSD);
         eurValueEditText = (EditText) findViewById(R.id.editTextEUR);
         usdRubValueTextView = (TextView) findViewById(R.id.textViewUSD);
         eurRubValueTextView = (TextView) findViewById(R.id.textViewEURO);
 
+        executeResponse();
         getRatesButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                executeResponse();
-                showNotification();
+
             }
         });
     }
@@ -99,17 +101,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //save:
-        sPref = getPreferences(MODE_PRIVATE);
-        SharedPreferences.Editor ed =sPref.edit();
-        ed.putFloat("USDRUB",usdRubRate);
-        ed.putFloat("EURRUB",eurRubRate);
-        ed.putFloat("myUSD",myUsd);
-        ed.putFloat("myEUR",myEur);
-        ed.commit();
-        Toast.makeText(this,"Saved", Toast.LENGTH_SHORT).show();
-    }
 
+    }
 
     public void showNotification() {
         PendingIntent pi = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), 0);
@@ -118,13 +111,29 @@ public class MainActivity extends AppCompatActivity {
                 .setTicker("Hello")
                 .setSmallIcon(android.R.drawable.ic_menu_report_image)
                 .setContentTitle("Attention!")
-                .setContentText("Курс растет")
+                .setContentText("USDRUB:" + String.valueOf(usdRubRate)+"\nEURRUB:" + String.valueOf(eurRubRate))
                 .setContentIntent(pi)
                 .setAutoCancel(true)
                 .build();
 
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         notificationManager.notify(0, notification);
+    }
+
+    private void saveData(){
+        sPref = getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor ed =sPref.edit();
+        ed.putFloat("USDRUB",Float.parseFloat(usdValueEditText.toString()));
+        ed.putFloat("EURRUB",Float.parseFloat(eurValueEditText.toString()));
+        ed.commit();
+        Toast.makeText(this,"Saved", Toast.LENGTH_SHORT).show();
+    }
+
+    private void loaData() {
+        sPref = getPreferences(MODE_PRIVATE);
+        float savedUsdRubRate = sPref.getFloat("USDRUB",0.0f);
+        float savedEurRubRate = sPref.getFloat("EURRUB",0.0f);
+        //Toast.makeText(this, String.valueOf(savedText), Toast.LENGTH_SHORT).show();
     }
 
     public interface ApiService {

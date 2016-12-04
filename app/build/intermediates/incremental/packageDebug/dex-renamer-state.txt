@@ -1,4 +1,4 @@
-#Sat Dec 03 21:03:23 NOVT 2016
+#Sun Dec 04 15:17:41 NOVT 2016
 base.0=/Users/maximkholmansky/Desktop/CurrencyRates-develop/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_27e21d79794fb702b2d8af03a9295b44431c340f
 renamed.1=classes2.dex
 renamed.0=classes.dex

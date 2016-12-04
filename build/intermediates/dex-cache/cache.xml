@@ -25,7 +25,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="00b1e12581983823cfb7286aec8123d43c02e342">
+        sha1="05d85eebba74cb360ab833f584a018bdb4f9bf2c">
         <dex dex="/Users/maximkholmansky/Desktop/CurrencyRates-develop/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_cc10a9d7d0eefd6434d198afd46ff971bdd7744f/classes.dex" />
     </item>
     <item
@@ -241,7 +241,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="1cea81c23f1f9b1106f5a39f75981ea8d5f0c29e">
+        sha1="bede0b1c0077f96e5ac2e5eb5f39892a042f0ecf">
         <dex dex="/Users/maximkholmansky/Desktop/CurrencyRates-develop/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_27e21d79794fb702b2d8af03a9295b44431c340f/classes.dex" />
     </item>
     <item
