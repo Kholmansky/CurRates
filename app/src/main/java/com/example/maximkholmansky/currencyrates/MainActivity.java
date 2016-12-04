@@ -66,12 +66,10 @@ public class MainActivity extends AppCompatActivity {
         getRatesButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                saveData();
             }
         });
     }
-
-
 
     private void executeResponse() {
         apiService.getResponse().enqueue(new Callback<ServerResponse>() {
@@ -89,7 +87,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
 
     public void showNotification() {
         PendingIntent pi = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), 0);
@@ -110,8 +107,8 @@ public class MainActivity extends AppCompatActivity {
     private void saveData(){
         sPref = getPreferences(MODE_PRIVATE);
         SharedPreferences.Editor ed =sPref.edit();
-        ed.putFloat("USDRUB",Float.parseFloat(usdValueEditText.toString()));
-        ed.putFloat("EURRUB",Float.parseFloat(eurValueEditText.toString()));
+        ed.putFloat("USDRUB",Float.parseFloat(usdValueEditText.getText().toString()));
+        ed.putFloat("EURRUB",Float.parseFloat(eurValueEditText.getText().toString()));
         ed.commit();
         Toast.makeText(this,"Saved", Toast.LENGTH_SHORT).show();
     }

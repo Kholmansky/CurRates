@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sun Dec 04 15:17:34 NOVT 2016
+#Sun Dec 04 16:03:12 NOVT 2016
 210.set=ANDROID_RESOURCE
 14.set=ANDROID_RESOURCE
 180.file=/Users/maximkholmansky/Desktop/CurrencyRates-develop/app/build/intermediates/res/resources-debug.ap_/res/drawable-xxhdpi-v4/abc_btn_switch_to_on_mtrl_00012.9.png
