@@ -10,75 +10,32 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.maximkholmansky.currencyrates.MainActivity">
 
+    <Button
+        android:id="@+id/buttonDoit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Refresh"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true" />
+
     <TextView
         android:id="@+id/textViewUSD"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextUSD"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="76dp"
         android:text="USD/RUB:"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_above="@+id/textViewEURO"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="33dp" />
 
     <TextView
         android:id="@+id/textViewEURO"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewUSD"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="35dp"
         android:text="EURO/RUB:"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <Button
-        android:id="@+id/buttonDoit"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        android:text="Refresh"
-        android:layout_below="@+id/textViewEURO"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:id="@+id/editTextUSD"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="numberDecimal"
-        android:layout_alignBaseline="@+id/textView1"
-        android:layout_alignBottom="@+id/textView1"
-        android:layout_toEndOf="@+id/textView1">
-
-        <requestFocus />
-    </EditText>
-
-    <TextView
-        android:text="EUR/RUB:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView2"
-        android:textAppearance="@android:style/TextAppearance.Material.Medium"
-        android:layout_alignBaseline="@+id/editTextEUR"
-        android:layout_alignBottom="@+id/editTextEUR"
-        android:layout_toStartOf="@+id/editTextUSD" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
-        android:ems="10"
-        android:id="@+id/editTextEUR"
-        android:layout_below="@+id/editTextUSD"
-        android:layout_toEndOf="@+id/textView2" />
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:text="USD/RUB:"
-        android:textAppearance="@android:style/TextAppearance.Material.Medium"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_marginBottom="31dp"
+        android:layout_above="@+id/buttonDoit"
+        android:layout_alignStart="@+id/textViewUSD" />
 
 </RelativeLayout>

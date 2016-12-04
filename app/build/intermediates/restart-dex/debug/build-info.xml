@@ -5,29 +5,29 @@
     density="xxhdpi"
     format="8"
     plugin-version="2.2.2"
-    timestamp="10800513144332"
+    timestamp="31787653579045"
     token="3950806333630581026"
     verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="190" />
+        duration="127" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="208" />
+        duration="65" />
     <task
         name="verifier"
-        duration="27" />
+        duration="21" />
 
     <artifact
         location="/Users/maximkholmansky/Desktop/CurrencyRates-develop/app/build/outputs/apk/app-debug.apk"
         type="MAIN" />
 
     <build
-        timestamp="10800513144332"
+        timestamp="31787653579045"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/Users/maximkholmansky/Desktop/CurrencyRates-develop/app/build/outputs/apk/app-debug.apk"
